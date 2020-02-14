@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
+import useForm from './useForm';
 
 const Form = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [values, handleChange] = useForm();
 
     const register = e => {
         e.preventDefault();
-        console.log({ name, email });
+        console.log(values);
     }
 
     return (
         <form onSubmit={register}>
 
             <label>Name:</label>
-            <iinput
-            value={name}
-            onChange={e => setName(e.target.value)}
+            <input
+            value={values.name || ''}
+            onChange={handleChange}
+            name='name'
             type='text'
             placeholder='John Doe'
             />
 
             <label>Email:</label>
-            <iinput
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            <input
+            value={values.email || ''}
+            onChange={handleChange}
+            name='email'
             type='email'
             placeholder='johnd@email.com'
             />
