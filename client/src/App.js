@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import Random from './Random';
+import Form from './components/Form';
 // import './App.css';
 
 class App extends React.Component {
@@ -31,8 +31,9 @@ render() {
   return (
     <div>
         <p>App</p>
-
-        <Random />
+        <h1>Signup to our Email Newsletter!</h1>
+        <Form />
+        
 
         {this.state.players.map((player, key) => (
           <Card player={player} key={key}/>
