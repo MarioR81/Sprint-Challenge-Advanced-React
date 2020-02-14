@@ -1,9 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { render } from "@testing-library/react";
+import App from "./App";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test("renders App without crashing", () => {
+  // Arange
+  const {getByText} = render(<App />);
+  // Act
+  const header = getByText(/newsletter/i);
+  // Assert
+  expect(header).toBeInTheDocument();
+  expect(header).toBeTruthy();
+  expect(header).not.toBeFalsy();
 });
+
+// jest global function
+//- test
+// test('test concise', () => {
+//  const { getByText } = render(<App />);
+//  getByText(/testing/i);
+// });
